@@ -1,0 +1,52 @@
+* {
+    margin:0;
+    padding:0 }
+
+body { background-color:beige }
+
+        h1 { margin-bottom:10px }
+                    
+                    span.username { font-family:cursive }
+
+        h1, h2, a { margin:10px 10px 10px 10px }
+
+        h2 { font-family:Verdana, Geneva, sans-serif }
+
+        div.forum {
+            width:60%;
+            height:200px;
+            padding-left:5px;
+            margin-left:10px;
+            overflow:scroll; }
+
+                table {
+                    border-spacing:0;
+                    max-height:150px;
+                    width:80%;
+                    border:1px solid blue;
+                    border-collapse:collapse;
+                    margin-left:10px; }
+
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse; }
+
+                        th, td { width:32% }
+
+                        thead.thead { background-color:lightblue }
+
+                                tr.white { background-color:white }
+
+                                        td {
+                                            background-color:lightgray;
+                                            font-family:Verdana, Geneva, sans-serif;
+                                            text-align:center;
+                                            padding:2px; }
+
+                                                td a {
+                                                    color:black;
+                                                    text-decoration:none; }
+
+                                                    a:visited { color:black }
+                                                    
+                        th.misc { background-color:lightgreen }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png" />
+        <title>Books & Coffee - Home</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="../static/css/homePage.css">
+    </head>
+    <body>
+        {% if reader %}
+            <div class="header">{{ reader[0].username }}</div>
+        {% endif %}
+        <div class="middle">
+            is currently reading<div id="current"></div>
+            <script src="../static/js/app.js"></script>
+            {% for book in books %}
+                {% if book['status'] == 'current' %}
+                    <p class="current"><a href="/edit/{{book['id']}}">{{ book['title'] }}</a></p>                    
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="left">
+            <h2>Wants to read:</h2>
+            <ol>
+                {% for book in books %}
+                    {% if book['status'] == 'future' %}
+                        <li><a href="/edit/{{book['id']}}">{{ book['title'] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="right">
+            <h2>Books read:</h2>
+            <ol>
+                {% for book in books %}
+                    {% if book['status'] == 'past' %}
+                        <li><a href="/edit/{{book['id']}}">{{ book['title'] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="bottom">
+            <h2 class="form">Add a new book:</h2>
+            <form action="/addBook" method='post'>
+                {% with messages = get_flashed_messages(category_filter=['title']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no_flash">.</p>
+                    {% endif %}
+                {% endwith %}
+                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="author" placeholder="Author">
+                <input type="number" min="0" name="pages" placeholder="Pages">
+                <p><label><input type="radio" name="status" value="past">Read</label></p>
+                <p><label><input type="radio" name="status" value="current">Currently Reading</label></p>
+                <p><label><input type="radio" name="status" value="future" checked="checked">Want to read</label></p>
+                <input type="submit" value=" Submit ">
+            </form>
+            <a class='back' href="/">Home</a>
+            <hr class="hr"><hr class="hr2">
+        </div>
+    </body>
+</html>

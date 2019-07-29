@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png"/>
+        <title>Books & Coffee</title>
+        <link rel="stylesheet" href="static/css/index.css">
+    </head>
+    <body>
+        <h1>Books <span class="ampersand">&</span> Coffee<span class="exclaim">!!</span> <img class="cup" src="static/img/cupII.png" alt="coffee"></h1>
+        <div class="left">
+            <div class="create">
+                <p class="account"><span class="cursive">C</span>reate an account: 
+                    <ul>
+                        <li>Keep track of books you've read...</li>
+                        <li>List the books you want to read...</li>
+                        <li>Enter forum and leave comments...</li>
+                    </ul>
+                </p>
+                {% if user %}
+                    <a class="no_click" href="/">Click Here</a>
+                {% else %}
+                    <a class="click" href="/createAccount">Click Here</a>
+                {% endif %}
+            </div>
+            <hr>
+            <div class="spoiler">
+                <h2 class="spoilerHead"><a class="spoilerHead" href="/spoilerRoom">Spoiler Room</a></h2>
+                <p class="rightTop spoil">Enter at your own peril...<br>Forum to discuss books, authors, <span class="etc">etc</span>... </p>
+                <a class="enter" href="/spoilerRoom">Enter</a>
+            </div>
+        </div>
+        <div class="middle">
+            {% if user %}
+                <h3>Welcome, <span class="guest">{{ user[0].username }}!</span></h3>
+                <a class="home" href="/logout">Logout</a><a class="home" href="/homePage">Home Page</a> 
+            {% else %}
+                <h3>Welcome, <span class="guest">Guest</span>!</h3>
+            {% endif %}
+            <img title="The Café Apartments - Sài Gòn" class="building" src="static/img/building.png" alt="Saigon's Café Apartments" style="width:100%">
+        </div>
+        <div class="right">                
+            <a class="rightTop clickBook_Club" href="/bookClub">Book Club</a>
+            <p class="bookClub_paragraph"><a class="clickBook_Club" href="/bookClub">Join a book club, schedule or attend an event</a></p>
+            <hr>
+            <h2 class="form">Log-In</h2>
+            <form action="/login" method="POST">
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <input class="form" type="text" name="username" placeholder=" User_name">
+                <input class="form" type="password" name="password" placeholder=" Password">
+                <input class="form" type="submit" value=" Submit ">
+            </form>
+            <img class="stack rightTop" src="static/img/stackII.png" alt="Stack of books">
+        </div>
+    </body>
+</html>

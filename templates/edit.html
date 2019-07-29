@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png" />
+        <title>Books & Coffee - Edit</title>
+        <link rel="stylesheet" href="../static/css/edit.css">
+    </head>
+    <body>
+        <h3 class="username">{{ user[0].username }}</h3>
+        <h1>Edit</h1>
+        {% if book %}
+            {% if book[0].status == 'past' %}
+                <p class="status">Status: Finished reading</p>
+            {% elif book[0].status == 'current' %}
+                <p class="status">Status: Reading</p>
+            {% elif book[0].status == 'future' %}
+                <p class="status">Status: want to read</p>
+            {% endif %}
+            {% with messages = get_flashed_messages(category_filter=['title']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/editBook" method='post'>
+                <input type="hidden" name="id" value="{{ book[0].id }}">
+                <input type="text" name="title" value="{{ book[0].title }}">
+                <input type="text" name="author" value="{{ book[0].author }}">
+                <input class="border" type="number" name="pages" value="{{ book[0].pages }}">
+                <p><label>
+                    {% if book[0].status == 'past' %}
+                        <input type="radio" name="status" value="past" checked="checked">Read</label></p>
+                    {% else %}
+                        <input type="radio" name="status" value="past">Read</label></p>
+                    {% endif %}
+                <hr>
+                <p><label>
+                    {% if book[0].status == 'current' %}
+                        <input type="radio" name="status" value="current"  checked="checked">Currently Reading</label></p>
+                    {% else %}
+                        <input type="radio" name="status" value="current">Currently Reading</label></p>
+                    {% endif %}
+                <hr>
+                <p><label> 
+                    {% if book[0].status == 'future' %}
+                        <input type="radio" name="status" value="future" checked="checked">Want to read</label></p>
+                    {% else %}
+                        <input type="radio" name="status" value="future">Want to read</label></p>
+                    {% endif %}
+                <input class="update" type="submit" value=" Update ">
+            </form>
+            <hr>
+            <form action="/removeBook" method="POST">
+                <input type="hidden" name="id" value="{{book[0].id}}">
+                <input type="hidden" name="status" value="removed">
+                <input type="submit" value="Remove Book">
+            </form>
+        {% endif %}
+            <hr>
+            <h3>Write a post:</h3>
+            <div>
+                {% with messages = get_flashed_messages(category_filter=['post']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p class="beige">-</p>
+                    {% endif %}
+                {% endwith %}
+                <form action="/addPost" method='post'>
+                    <input type="hidden" name="id" value="{{ book[0].id }}">
+                    <textarea name="content" cols="30" rows="10"> </textarea>
+                    <input type="submit" value=" Post ">
+                </form>
+            </div>
+            <a class="black" href="/homePage">Back</a> | <a class="black" href="/">Home</a>
+        <img class="row" src="../static/img/row.png" alt="row of books"> 
+    </body>
+</html>

@@ -1,0 +1,69 @@
+* {
+    margin:0px;
+    padding:0px; }
+    
+body {
+    background-color:beige;
+    margin:8px; }
+
+        div.header {
+            width:85%;
+            margin:0px auto; }
+
+                h4 { margin:3px 3px 3px 0px }
+
+                        span.welcome { font-family:cursive }
+
+                a {
+                    text-decoration:none;
+                    color:black; }
+
+                h1, h2, h3, h5 {
+                    margin:8px;
+                    text-align:center; }
+
+        p.post {
+            background-color:lightblue;
+            border:1px solid black;
+            width:65%;
+            min-height:60px;
+            margin:0px auto;
+            margin-top:15px;
+            margin-bottom:25px;
+            padding:5px; 
+            text-align:center; }
+
+                span.poster { color:green }
+
+        div.commentBox {
+            background-color:lightgray;
+            border:1px solid black;
+            width:45%;
+            min-height:40px;
+            margin:0px auto;
+            margin-top:10px;
+            margin-bottom:10px;
+            padding:5px;
+            text-align:center;
+            word-wrap: break-word;         
+            overflow-wrap: break-word; 
+            border-radius:10px;     }
+            
+                    p.commentor { color:maroon }
+
+        [name="content"] {
+            border:1px solid black;
+            display:block;
+            margin:0px auto;
+            margin-top:5px; }
+
+        [type="submit"] {
+            display:block;
+            margin:0px auto;
+            margin-top:5px;
+            background-color:dodgerblue;
+            color:white;
+            padding:3px; }
+
+        p.no_posts, p.paragraph { text-align:center }
+    

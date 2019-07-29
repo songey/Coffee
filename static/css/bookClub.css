@@ -1,0 +1,134 @@
+* {
+    margin:0;
+    padding:0; }
+
+body {
+    background-color:beige;
+    margin:8px; }
+
+    h1 {
+        text-align:center;
+        color:maroon;
+        width:99%; }
+
+            span { color:black }
+
+            img.cup {
+                background-color:transparent;
+                height:170px; }
+
+    a.back {
+        display:block;
+        margin-bottom:3px;
+        margin-left:10px; }
+
+    h3, h2 { margin-left:10px }
+
+    div#map {
+        height:100px;
+        width:250px;
+        margin:10px;
+        padding:0px; }
+
+    form{
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+    h2 {
+        text-decoration:underline;
+        margin-bottom:2px; }
+
+    div.readers { 
+        padding-top:10px;
+        padding-left:20px;
+        max-width:300px;
+        min-height:221px;
+        overflow:scroll;
+        border:1px solid turquoise;
+        background-color:lightgray;
+        margin:10px;    }
+
+            li {
+                padding:2px;
+                list-style-type:circle; }
+
+                    a {
+                        color:black;
+                        text-decoration:none; }
+                    
+                    a:visited { color:black }
+    
+/* ************************* */
+/* ************************* */
+
+@media only screen and (max-width:480px) {
+
+    div.readers, div.left, div#map { width:100% }
+
+    div.left{
+        height:250px;
+        display:block;
+        margin:0px auto;
+    }
+    div#map{
+        height:230px;
+    }
+}
+
+@media only screen and (min-width:481px) {
+
+    div.left {
+        height:400px;
+        width:60%;
+        padding:5px; }
+
+        div#map {
+                overflow: auto;
+                height:400px;
+                width:100%;
+                margin:0px auto; }
+
+    div.right { width:30% }
+
+    div.right{
+        display:inline-block;
+        vertical-align:top;
+        border:1px solid black;
+        
+     }
+     div.left {
+        display:inline-block;
+        vertical-align:top;
+        border:1px solid black;
+        height: 500px;
+     }
+}
+
+@media only screen and (min-width:1024px) {
+
+    div.left {
+        height:400px;
+        width:60%;
+        padding:5px; }
+
+         div#map {
+                overflow: auto;
+                width:90%;
+                margin:0px auto; }
+
+    div.right { width:25% }
+        
+        div.right{
+            display:inline-block;
+            vertical-align:top;
+            border:1px solid black;
+            
+         }
+         div.left {
+            display:inline-block;
+            vertical-align:top;
+            border:1px solid black;
+            height: 500px;
+         }
+}

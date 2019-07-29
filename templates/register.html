@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png"/>
+        <title>Register an account</title>
+        <link rel="stylesheet" href="static/css/register.css">
+    </head>
+    <body>
+        <div class="register">
+            <form action="/register" method="POST">
+                {% with messages = get_flashed_messages(category_filter=['session']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% else %}
+                        {% with messages = get_flashed_messages(category_filter=['username']) %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class="flash">{{ message }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {% with messages = get_flashed_messages(category_filter=['length']) %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <p class="flash">{{ message }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p class="no_flash">~</p>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                {% endwith %}
+                {% with messages = get_flashed_messages(category_filter=['password']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no_flash">~~</p>
+                    {% endif %}
+                {% endwith %}
+                <h2>Register</h2>
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value=" Submit ">
+            </form>
+            <p>*Password must be at least 4 characters...</p>
+            <a class="back" href="/">Home</a>
+        </div>
+    </body>
+</html>

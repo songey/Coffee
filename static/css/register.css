@@ -1,0 +1,53 @@
+* {
+    margin:0;
+    padding:0; }
+
+body {
+    background-image: url('../img/self.png');
+    background-color:beige;
+    margin:8px;  }
+
+        div.register {
+            background-color:beige;
+            border-radius:3px; 
+            width:250px;
+            margin-top:8px;
+            margin-left:15px;
+            text-align:center; }
+
+                p { margin:16px 0px 8px }
+
+                        p.flash, p.no_flash { margin-bottom:0px }
+
+                        p.flash { color:maroon }
+
+                        p.no_flash { color:beige }
+
+                
+                h2 {
+                    margin:9px 0px;
+                    font-family:Verdana, Geneva, sans-serif; }
+
+
+                input {
+                    font-family:Verdana, Geneva, sans-serif;
+                    display:block;
+                    margin-top:3px;
+                    margin-left:15px;
+                    padding:1px; }
+
+                        [type="submit"] {
+                            background-color:lightgray;
+                            font-family:Verdana, Geneva, sans-serif;
+                            font-weight:bold; }
+
+                a.back {
+                    color:black;
+                    float:left;
+                    margin-left:15px;
+                    padding-bottom:5px; 
+                    display:block; }
+/* *********************************** */
+/* *********************************** */
+@media only screen and (max-width:480px) { div.register { display:inline-block } }
+@media only screen and (min-width:481px) { div.register { display:inline-block } }

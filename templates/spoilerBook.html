@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png"/>
+        <title>Spoiler</title>
+        <link rel="stylesheet" href="../static/css/spoilerBook.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+            {% if user %}
+                <p class="welcome">Welcome, <span class="username">{{ user[0].username }}</span></p>
+            {% endif %}
+            <a class="back" href="/spoilerRoom">Back</a> | <a class="back" href="/">Home</a> 
+            <h5>"{{ spoil[0].status.capitalize() }}"</h5> 
+            <h1>{{ spoil[0].title }}</h1>
+        </div>
+        <hr>
+        <div class="topic">
+            <p>{{ spoil[0].content }}</p><br>
+            <p>-{{ spoiler[0].username }}</p>
+        </div>
+        {% if comments %}
+            <div class="commentBox">
+                {% for comment in comments %}
+                    <div class="comment">
+                        <h5 class="text">{{ comment.comment }}</h5>
+                        <h6>-{{comment.username}}</h6>
+                    </div>
+                {% endfor %}
+            </div>
+                {% if user %}
+                    <form id="spoil" action="/spoilComment" method="POST">
+                        <input type="hidden" name="id" value="{{ spoil[0].id }}">
+                        <textarea name="comment" cols="30" rows="3"> </textarea>
+                        <input type="submit" value=" Comment ">
+                    </form>
+                {% else %}
+                    <br>
+                    <p class="paragraph">(Log in or create an account to leave posts/comments)</p>
+                {% endif %}
+        {% else %} 
+            <p class="no_comments">(no comments yet)</p>
+            {% if user %}
+                <form id="spoil" action="/spoilComment" method="POST">
+                    <input type="hidden" name="id" value="{{ spoil[0].id }}">
+                    <textarea name="comment" cols="30" rows="3"> </textarea>
+                    <input type="submit" value=" Leave comment ">
+                </form>
+            {% else %}
+                <p class="paragraph">(Log in or create an account to leave comments)</p>
+            {% endif %}
+        {% endif %}
+        <br>
+        <br>
+    </body>
+</html>

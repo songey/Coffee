@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png"/>
+        <title>Books & Coffee</title>
+        <link rel="stylesheet" href="../static/css/readerBook.css">
+    </head>
+    <body>
+        <div>
+            {% if book %}
+                <div class="header">
+                    {% if user %}
+                        <h4>Welcome, <span class="welcome">{{ user[0].username }}</span></h4>
+                    {% else %}
+                        <h4>Welcome, <span class="welcome">Guest</span></h4>
+                    {% endif %}
+                    <a href="/readerPage/{{book[0].reader_id}}">Back</a> | <a href="/">Home</a>
+                    {% if posts %}
+                        <h3> Posted by: <span class="poster">{{poster[0].username}}</span></h3>
+                    {% endif %}
+                    <h1>{{ book[0].title }}</h1>
+                    <h3>Author: {{ book[0].author }}</h3>
+                    <h3>Pages: {{ book[0].pages }}</h3>
+                </div>
+                <hr><br>
+                {% if posts %}
+                    {% for post in posts | reverse %}
+                        <p class="post">*** <br>{{ post.content }}<br>-<span class="poster">{{poster[0].username}}</span></p>
+                        {% if comments %}
+                            {% for comment in comments %}
+                                {% if comment.post_id == post.id %}
+                                    <div class="commentBox">
+                                        <p>{{ comment.content }}</p>
+                                        {% if readers %}
+                                            {% for reader in readers %}
+                                                {% if reader.id == comment.reader_id %}
+                                                    <p class="commentor">-{{ reader.username }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% if user %}
+                            <form action="/leaveComment" method="POST">
+                                <input type="hidden" name="book_id" value="{{book[0].id}}">
+                                <input type="hidden" name="id" value="{{ post.id }}">
+                                <textarea name="content" cols="30" rows="2"></textarea>
+                                <input type="submit" value=" {{ user[0].username }} - comment? ">
+                            </form>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p class="no_posts"> (no posts yet)</p>
+                {% endif %}
+                {% if user %}
+                    <p></p>
+                {% else%}
+                    <p class="paragraph">(Log in or create an account to leave comments)</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </body>
+</html>

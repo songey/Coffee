@@ -1,0 +1,95 @@
+* {
+    margin:0px;
+    padding:0px; }
+
+body {
+    background-color:beige;
+    margin:8px; }
+
+            p { margin:0px auto }
+
+                    a.back, p.welcome {
+                        color:black;
+                        text-decoration:none;
+                        margin:2px;
+                        padding:2px; }
+
+                    span.username {
+                        font-family:cursive;
+                        font-weight:bold;
+                        font-size:18px; }
+
+            h5, h1, h6 { text-align:center }
+
+            h1 {
+                color:turquoise;
+                text-shadow: 1px 1px; }
+
+            hr { margin:10px 0px }
+
+            div.topic {
+                background-color:lightblue;
+                border:1px solid black;
+                width:60%;
+                min-height:60px;
+                margin:0px auto;
+                margin-bottom:10px;
+                padding:10px;
+                border-radius:3px;
+                text-align:center;
+                font-family:sans-serif; }
+
+            
+            div.commentBox {
+                background-color:lightblue;
+                border-top:1px solid black;
+                border-right:1px solid black;
+                border-left:1px solid black;
+                max-height:500px;
+                width:50%;
+                overflow:scroll;
+                margin:0px auto;
+                margin-bottom:10px; }
+
+                    div.comment {
+                        background-color:lightgray;
+                        border:1px solid black;
+                        margin:0px auto;
+                        margin-top:10px;
+                        margin-bottom:10px;
+                        padding:5px;
+                        min-height:50px;
+                        width:50%;
+                        word-wrap: break-word;         
+                        overflow-wrap: break-word;
+                        border-radius:8px; }
+
+                            h5.text {
+                                padding-top:10px;
+                                margin-bottom:2px; }
+
+            form {
+                width:60%;
+                margin:0px auto; }
+
+                    textarea {
+                        border:1px solid black;
+                        margin:0px auto; }
+
+                            [name="comment"] {
+                                display:block;
+                                margin:0px auto; }
+
+                    [type="submit"] {
+                        background-color:dodgerblue;
+                        color:white; 
+                        margin:0px auto;
+                        margin-top:5px;
+                        display:block; }
+
+                        
+            p.paragraph { text-align: center }
+            
+            p.no_comments {
+                margin-bottom:5px;
+                text-align: center; }

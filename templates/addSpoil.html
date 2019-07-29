@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Add spoil</title>
+        <link rel="stylesheet" href="static/css/addSpoil.css">
+    </head>
+    <body>
+        <div class="container">
+            {% if user %}
+                <h2>Welcome,  <span class="username">{{ user[0].username }}</span></h2>
+                <h1>Add spoil here</h1>
+                {% with messages = get_flashed_messages(category_filter) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flash">{{ message }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <br>
+                    {% endif %}
+                {% endwith %}
+            {% endif %}
+            <form action="/addSpoilPost" method='post'>
+                <input type="text" name="title" placeholder="Book/Author/Miscell...">
+                <p><label><input type="radio" name="status" value="book">Book</label></p>
+                <p><label><input type="radio" name="status" value="author">Author</label></p>
+                <p><label><input type="radio" name="status" value="miscellaneous" checked="checked">Miscellaneous</label></p>
+                <textarea name="content" cols="30" rows="10"></textarea>
+                <a class="cancel" href="/spoilerRoom">Cancel</a>
+                <input type="submit" value=" Submit ">
+            </form>
+            <img class="row" src="../static/img/row.png" alt="row of books">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="../static/img/cup.png"/>
+        <title>Spoiler Room</title>
+        <link rel="stylesheet" href="static/css/spoilerRoom.css">
+    </head>
+    <body>
+        {% if user %}
+            <h1>Welcome <span class="username">{{ user[0].username }}</span>, to the Spoiler Room!</h1>
+            <a href="/">Home</a> | <a href="/addSpoil">Add Spoil Post</a>
+        {% else %}
+            <h1>Welcome to the Spoiler Room!</h1>
+            <a href="/">Home</a>
+        {% endif %}
+        <h2>Books</h2>
+        <div class="forum">
+            <table>
+                <thead class="thead">
+                    <tr>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if spoils %}
+                        {% for spoil in spoils | reverse %}
+                            {% if spoil.status == 'book' %}
+                                <tr class="white">
+                                    <td><a href="/spoilerBook/{{spoil.id}}">{{ spoil.title }}</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <h2>Authors</h2>
+        <div class="forum">
+            <table>
+                <thead class="thead">
+                    <tr>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if spoils %}
+                        {% for spoil in spoils | reverse %}
+                            {% if spoil.status == 'author' %}
+                                <tr class="white">
+                                    <td><a href="/spoilerBook/{{spoil.id}}">{{spoil.title}}</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <h2>Miscellaneous</h2>
+        <div class="forum">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="misc">Random Topic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if spoils %}
+                        {% for spoil in spoils | reverse %}
+                            {% if spoil.status == 'miscellaneous' %}
+                                <tr class="white">
+                                    <td><a href="/spoilerBook/{{spoil.id}}">{{ spoil.title }}</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
